@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Trading System</title>  
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'myapp/Sender.js' %}"></script>
+   
+    
+    
+</head>
+<body>
+<p>台股交易系統</p>
+    <button type="button" name="btnUpdateAllStock" id="btnUpdateAllStock" onclick="alert('資料庫更新中...!')" >更新全部股票資料庫!</button><br />
+    上市/上櫃/ALL:<input type="text" name="market" id="market" />
+    股號:<input type="text" name="stockId" id="stockId" />
+    <button type="button" name="btnUpdateOneStock" id="btnUpdateOneStock" onclick="alert('資料庫更新中...!')" >更新單一個股資料庫!</button><br />
+    <hr />
+    <button type="button" onclick="alert('找出價格穿越n日最高價/最低價，計算中...!')">找出價格突破股</button>
+    <label>輸入n日</label>
+    <input type="text" id="SelectStockInNDays" /><br />
+    <label>選出的股票:</label><br />
+    <textarea name="SelectedStockList" cols="20" rows="5"></textarea>
+<hr />
+
+<form action="main.py" method="post">
+     <fieldset>
+        <legend>帳戶基本資訊:</legend>
+         帳號:<input type="text" name="accountId" /><br />
+         帳戶金額:<input type="text" name="accountMoney" /><br />
+    </fieldset>
+    <label>我的股票:</label><br />
+    <textarea name="MyStockList" cols="20" rows="5"></textarea>
+
+    <hr />
+    <button type="button" name="btnSetTurtleParam" id="btnSetTurtleParam" onclick="alert('龜族交易策略運算中...')" >龜族交易!</button><br />
+    <fieldset>
+        <ledend>龜族輸入參數:</ledend><br />
+        股號:<input type="text" name="stockIdForTurtle" id="stockIdForTurtle" /><br />
+        X 天期計算:<input type="text" name="calculatingDays" id="calculatingDays" /><br />
+    </fieldset>
+    <label>部位規模(每單位股數):</label>
+    <textarea name="StockQtyForEveryUnit" id="StockQtyForEveryUnit"></textarea>
+    
+    <br />
+    <textarea name="OverWeightList" id="OverWeightList" cols="20" rows="5"></textarea>
+    <textarea name="StopPriceList" id="StopPriceList" cols="20" rows="5"></textarea>
+    <br />
+
+
+<input type="submit" value="提交計算">
+<input type="reset" value="重設"><br/>
+
+</form>
+<br><p>計算結果:<span id="result"></span></p>
+
+</body>
+</html>
